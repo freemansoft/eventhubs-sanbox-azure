@@ -1,18 +1,31 @@
+# Purpose
+Create an eventhub sandbox that can be used for example programs. This project has provisioning and de-provisioning scripts. 
 
+1. Create a resource group to hold everything we create
+1. Create a user Assigned Identity that can be used to read and write EventHub data
+1. Create an EventHubs namespace and three EventHub instances.
+1. Create a Shared Access Signature with read write permissions
 
-## Createing Resources
+## Future
+Include provisioning template examples.
+
+## Creating Resources
+Run these scripts in order. 
+
 | Command | Purpose |
 | - | - |
 | 0-install-tools.sh | Install Azure CLI and jq rquired by these scripts |
-| 1-create-resources.sh | Create resources required for eventhubs: resource groups, etc. |
-| 2-create-event-hubs.sh | Creates all the `event hubs` constructs down to the hubs themselves |
+| 1-login-az.sh | Log in so you have permissions to run the rest of the script operations | 
+| 2-create-resources.sh | Create resources required for eventhubs: resource groups, etc. |
+| 3-create-event-hubs.sh | Creates all the `event hubs` constructs down to the hubs themselves |
 
 ## Deleting resources
-Eventhub clusters cannot be deleted until 4 hours after creation.
+Eventhub clusters cannot be deleted until 4 hours after creation. The destroy-namespace script exists so that you can tear down and rebuild namespaces and individual hubs in a shorter iterative cycle.
+
 | Command | Purpose |
 | - | - |
 | 10-destroy-resource-group.sh | Remove this example by removing the resource group |
-| 11-destron-namespace.sh | Remove the namespace and eventhub (topics). Leaves the resource group and cluster |
+| 11-destroy-namespace.sh | Remove the namespace and eventhub (topics). Leaves the resource group and cluster |
 
 ## Kafka vs Event Hubs
 | Kafka |	Event Hubs |
@@ -42,7 +55,7 @@ Returned by `az role definition list` [Role Assignements docs](https://docs.micr
 * `Azure Event Hubs Data Receiver`
 * `Azure Event Hubs Data Sender`
 
-## References
+# References
 EventHubs 
     * https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview
 * Security
