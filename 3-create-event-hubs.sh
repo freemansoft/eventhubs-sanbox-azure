@@ -32,14 +32,15 @@ if [ "[]" == "$eh_namespace_metadata" ]; then
         --location "$AZURE_REGION" \
         --enable-kafka true --sku Standard )
     echo "eventhubs namespace creation returned: $eh_namespace_create_results"
-    # enables Shared Access Signature (SAS) - a token secret instead of AZ principal
+    # enables Shared Access Signature (SAS) on namespace - a token secret instead of AZ principal
+    # Manage requires Listen and Send
     auth_rule_create_results=$(az eventhubs namespace authorization-rule create \
         --name $EVENTHUBS_NAMESPACE_AUTH_RULE \
         --namespace-name "$EVENTHUBS_NAMESPACE" \
         --resource-group "$AZURE_RESOURCE_GROUP" \
-        --rights Listen Send \
+        --rights Listen Send Manage \
         )
-    echo "eventhubs namespace augh-rule returned: $auth_rule_create_results"
+    echo "eventhubs namespace auth-rule returned: $auth_rule_create_results"
 else 
     echo "eventhubs namespace exists : $EVENTHUBS_NAMESPACE"
 fi
@@ -76,13 +77,13 @@ eventhub_hub_create(){
             --resource-group "$AZURE_RESOURCE_GROUP" \
             )
         echo "eventubs eventhub consumer-group cg-$eventhub_hub_name creation returned: $eh_cg_create_results"
-        # enables Shared Access Signature (SAS) - a token secret instead of AZ principal
+        # enables Shared Access Signature (SAS) on hub for Send - a token secret instead of AZ principal
         eh_auth_create_results=$(az eventhubs eventhub authorization-rule create \
             --eventhub-name "$eventhub_hub_name" \
             --name "$EVENTHUBS_HUB_AUTH_RULE" \
             --namespace-name "$EVENTHUBS_NAMESPACE" \
             --resource-group "$AZURE_RESOURCE_GROUP" \
-            --rights Listen Send \
+            --rights Send \
         )
         echo "eventubs eventhub authorization-rule $EVENTHUBS_HUB_AUTH_RULE creation returned: $eh_auth_create_results"
     else

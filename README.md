@@ -49,6 +49,10 @@ This project configures authorizaton for both Shared Access Signature (SAS) and 
 ### Shared Access Signature
 A SAS is essentially a shared secret that can be used as identity.  It is simple to use.  It can be used by anyone in posession in of the shared secret.  SAS management comes with all the revocation, renewal issues of a shared certificate.
 
+The sample configures 
+* A SAS on the `namespace` for managing the EventHubs.  
+* A SAS on each `EventHub` for Sending data
+
 ### Azure Role Assignments
 Authorizaton can be applied at the Namespace or the individual EventHub level.  Azure EventHubs have several built in roles that can be assigned at the _namespace_ or _eventhub_ level.   
 
