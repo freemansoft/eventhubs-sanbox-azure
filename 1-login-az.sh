@@ -8,6 +8,7 @@ source $DIR/env.sh
 if !  az account list-locations > /dev/null ; then
     echo "running interactive login"
     az login
+    #az account set --subscription "some-subscription-name-or-id"
 else
     echo "already logged in"
 fi

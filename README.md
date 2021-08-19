@@ -20,12 +20,15 @@ Run these scripts in order.
 | 3-create-event-hubs.sh | Creates all the `event hubs` constructs down to the hubs themselves |
 
 ## Deleting resources
-Eventhub clusters cannot be deleted until 4 hours after creation. The destroy-namespace script exists so that you can tear down and rebuild namespaces and individual hubs in a shorter iterative cycle.
+Scripts that can delete 
 
 | Command | Purpose |
 | - | - |
-| 10-destroy-resource-group.sh | Remove this example by removing the resource group |
-| 11-destroy-namespace.sh | Remove the namespace and eventhub (topics). Leaves the resource group and cluster |
+| 90-destroy-resource-group.sh | Remove this example by removing the resource group |
+| 91-destroy-namespace.sh | Remove the namespace and eventhub (topics). Leaves the resource group  |
+
+This project no longer creates dedicated clusters.  But as an FYI...
+* Eventhub clusters cannot be deleted until 4 hours after creation. The destroy-namespace script exists so that you can tear down and rebuild namespaces and individual hubs in a shorter iterative cycle.
 
 ## Kafka vs Event Hubs
 | Kafka |	Event Hubs |
@@ -37,7 +40,8 @@ Eventhub clusters cannot be deleted until 4 hours after creation. The destroy-na
 | Consumer Group |	Consumer Group |
 | Offset |	Offset |
 
-An EventHub `cluster` is an Azure provisioning and resource concept
+* An EventHub `cluster` is an Azure provisioning and resource concept
+* Creating an EventHubs `cluster` creates a dedicated cluster. **Do not do that** while experimenting experimentation
 
 ## Authorization
 This project configures authorizaton for both Shared Access Signature (SAS) and Azure AD roles.

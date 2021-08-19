@@ -6,7 +6,6 @@
 #   default subscription
 #   resource group exists
 # Provisions
-#   #vent Hubs cluster 
 #   Event Hubs namespace 
 #       Enables a shared access token
 #       Enables read/write for a user assigned identity
@@ -20,19 +19,7 @@ source $DIR/env.sh
 source $DIR/env-identity.sh
 
 echo "-----------event hub cluster-----------------"
-eh_cluster_metadata=$(az eventhubs cluster list --resource-group "$AZURE_RESOURCE_GROUP" --query "[?name=='$EVENTHUBS_CLUSTER_NAME']")
-echo "eh_eventhub_metadata: $eh_cluster_metadata"
-if [ "[]" == "$eh_cluster_metadata" ]; then
-    echo "creating eventhub cluster: $EVENTHUBS_CLUSTER_NAME"
-    eh_cluster_create_results=$(az eventhubs cluster create  \
-        --resource-group "$AZURE_RESOURCE_GROUP" \
-        --name "$EVENTHUBS_CLUSTER_NAME" \
-        --location "$AZURE_REGION" \
-        )
-    echo "event hubs cluster creation returned: $eh_cluster_create_results"
-else 
-    echo "event hub cluster exists : $EVENTHUBS_CLUSTER_NAME"
-fi
+echo "Not creating cluster. Don't want dedicated \$3K/month cluster"
 
 echo "-----------namespace (kafka cluster)-----------------"
 eh_namespace_metadata=$(az eventhubs namespace list --resource-group "$AZURE_RESOURCE_GROUP" --query "[?name=='$EVENTHUBS_NAMESPACE']")

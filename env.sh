@@ -16,7 +16,6 @@ AZURE_RESOURCE_GROUP="$root_name"
 # should make one for READ and one for WRITE but this is just a demo
 EVENTHUBS_ID_NAME="identity-$root_name"
 
-EVENTHUBS_CLUSTER_NAME="cluster-$root_name"
 EVENTHUBS_NAMESPACE="namespace-$root_name"
 EVENTHUBS_NAMESPACE_AUTH_RULE="send-receive-$root_name"
 EVENTHUBS_HUB_NAME_DATA="$root_name-data-1"
