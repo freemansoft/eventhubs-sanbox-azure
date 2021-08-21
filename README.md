@@ -65,10 +65,10 @@ Returned by `az role definition list` [Role Assignements docs](https://docs.micr
 
 # References
 * Author's blogs and videos
-    * [Cloud Native and other Identities in Azure](http://joe.blog.freemansoft.com/2021/08/cloud-native-and-other-identities-in.html)
+    * [Cloud Native and other Identities in Azure: Blog](http://joe.blog.freemansoft.com/2021/08/cloud-native-and-other-identities-in.html)
     * [Selecting the right Azure Identities : Video](https://youtu.be/-g7ZJLQNaWU)
-    * [Managed Identities and Shared Access tokens for Azure EventHubs](http://joe.blog.freemansoft.com/2021/08/managed-identities-and-shared-access.html)
-    * future video
+    * [Managed Identities and Shared Access tokens for Azure EventHubs: Blot](http://joe.blog.freemansoft.com/2021/08/managed-identities-and-shared-access.html)
+    * [IAM and Role Assignments in Azure EventHubs: Video](https://youtu.be/NJMf23Sg_JY)
 * EventHubs
     * https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview
 * Security
