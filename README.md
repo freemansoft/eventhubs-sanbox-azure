@@ -64,13 +64,18 @@ Returned by `az role definition list` [Role Assignements docs](https://docs.micr
 * `Azure Event Hubs Data Sender`
 
 # References
-EventHubs 
+* Author's blogs and videos
+    * [Cloud Native and other Identities in Azure](http://joe.blog.freemansoft.com/2021/08/cloud-native-and-other-identities-in.html)
+    * [Selecting the right Azure Identities : Video](https://youtu.be/-g7ZJLQNaWU)
+    * [Managed Identities and Shared Access tokens for Azure EventHubs](http://joe.blog.freemansoft.com/2021/08/managed-identities-and-shared-access.html)
+    * future video
+* EventHubs
     * https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview
 * Security
     * https://docs.microsoft.com/en-us/azure/event-hubs/authenticate-managed-identity?tabs=latest
     * https://docs.microsoft.com/en-us/azure/event-hubs/authorize-access-shared-access-signature
     * https://docs.microsoft.com/en-us/azure/event-hubs/authenticate-shared-access-signature
-* Tutoriials
+* Tutorals
     * https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-kafka-connect-tutorial
     * https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-quickstart-kafka-enabled-event-hubs
     * https://docs.microsoft.com/en-us/azure/developer/java/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
