@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # should set the subscription
-AZURE_REGION="EastUS"
+AZURE_REGION="eastus"
 #AZURE_SUBSCRIPTION=[to be filled]
 
 
@@ -17,9 +17,9 @@ AZURE_RESOURCE_GROUP="$root_name"
 EVENTHUBS_ID_NAME="identity-$root_name"
 
 EVENTHUBS_NAMESPACE="namespace-$root_name"
-EVENTHUBS_NAMESPACE_AUTH_RULE="send-receive-$root_name"
+EVENTHUBS_NAMESPACE_AUTH_RULE="manage-$root_name"
 EVENTHUBS_HUB_NAME_DATA="$root_name-data-1"
 EVENTHUBS_HUB_NAME_SUCCESS="$root_name-success-1"
 EVENTHUBS_HUB_NAME_FAIL="$root_name-failure-1"
-EVENTHUBS_HUB_AUTH_RULE="send-receive-$root_name"
+EVENTHUBS_HUB_AUTH_RULE="send-$root_name"
 

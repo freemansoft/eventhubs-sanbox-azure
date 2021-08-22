@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "azure_region": {
+            "value": null
+        },
+        "namespaces_namespace_name": {
+            "value": null
+        },
+        "namespaces_namespace_authRule_name": {
+            "value": null
+        },
+        "userAssignedIdentities_identity_name": {
+            "value": null
+        },
+        "eventHubs_eventHub_data_name": {
+            "value": null
+        },
+        "eventHubs_eventHub_failure_name": {
+            "value": null
+        },
+        "eventHubs_eventHub_success_name": {
+            "value": null
+        },
+        "eventHubs_eventHub_authRule_name": {
+            "value": null
+        }
+    }
+}
