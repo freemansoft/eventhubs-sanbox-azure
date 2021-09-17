@@ -45,17 +45,6 @@ else
     echo "eventhubs namespace exists : $EVENTHUBS_NAMESPACE"
 fi
 
-echo "-----------namespace rbac for UAI (kafka cluster)-----------------"
-# could be moved inside create block above
-# enable user assigned identity as sender/receiver
-# could do this with service principal instead
-sender_role_id=$(az role definition list -n "Azure Event Hubs Data Sender" -o tsv --query '[0].id')
-receiver_role_id=$(az role definition list -n "Azure Event Hubs Data Receiver" -o tsv --query '[0].id')
-eventhubs_id=$(az eventhubs namespace show --resource-group $AZURE_RESOURCE_GROUP --name $EVENTHUBS_NAMESPACE -o tsv --query 'id')
-az role assignment create --assignee $EVENTHUBS_ID_PRINCIPAL_ID --role $sender_role_id --scope $eventhubs_id
-az role assignment create --assignee $EVENTHUBS_ID_PRINCIPAL_ID --role $receiver_role_id --scope $eventhubs_id  
-
-
 # the only property that differs between calls is $eventhub_hub_name
 eventhub_hub_create(){
     echo "-----------eventhubs eventhub (kafka topic)-----------------"

@@ -2,36 +2,31 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "azure_region": {
-            "defaultValue": "eastus",
+        "lastPublishedAt": {
+            "type": "String"
+        },
+        "location": {
             "type": "String"
         },
         "namespaces_namespace_name": {
-            "defaultValue": "namespace-event-hub-example-1",
             "type": "String"
         },
         "namespaces_namespace_authRule_name": {
-            "defaultValue": "manage-event-hub-example-1",
             "type": "String"
         },
         "userAssignedIdentities_identity_name": {
-            "defaultValue": "identity-event-hub-example-1",
             "type": "String"
         },
         "eventHubs_eventHub_data_name": {
-            "defaultValue": "event-hub-example-1-data-1",
             "type": "String"
         },
         "eventHubs_eventHub_failure_name": {
-            "defaultValue": "event-hub-example-1-failure-1",
             "type": "String"
         },
         "eventHubs_eventHub_success_name": {
-            "defaultValue": "event-hub-example-1-success-1",
             "type": "String"
         },
         "eventHubs_eventHub_authRule_name": {
-            "defaultValue": "send-event-hub-example-1",
             "type": "String"
         }
     },
@@ -41,7 +36,10 @@
             "type": "Microsoft.EventHub/namespaces",
             "apiVersion": "2021-01-01-preview",
             "name": "[parameters('namespaces_namespace_name')]",
-            "location": "[parameters('azure_region')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
             "sku": {
                 "name": "Standard",
                 "tier": "Standard",
@@ -58,13 +56,19 @@
             "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
             "apiVersion": "2018-11-30",
             "name": "[parameters('userAssignedIdentities_identity_name')]",
-            "location": "[parameters('azure_region')]"
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            }
         },
         {
             "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
             "apiVersion": "2021-01-01-preview",
             "name": "[concat(parameters('namespaces_namespace_name'), '/RootManageSharedAccessKey')]",
-            "location": "[parameters('azure_region')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
             ],
@@ -80,7 +84,10 @@
             "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
             "apiVersion": "2021-01-01-preview",
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('namespaces_namespace_authRule_name'))]",
-            "location": "[parameters('azure_region')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
             ],
@@ -96,7 +103,10 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs",
             "apiVersion": "2021-01-01-preview",
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_data_name'))]",
-            "location": "[parameters('azure_region')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
             ],
@@ -110,7 +120,10 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs",
             "apiVersion": "2021-01-01-preview",
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_failure_name'))]",
-            "location": "[parameters('azure_region')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
             ],
@@ -124,7 +137,10 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs",
             "apiVersion": "2021-01-01-preview",
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_success_name'))]",
-            "location": "[parameters('azure_region')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
             ],
@@ -138,7 +154,10 @@
             "type": "Microsoft.EventHub/namespaces/networkRuleSets",
             "apiVersion": "2021-01-01-preview",
             "name": "[concat(parameters('namespaces_namespace_name'), '/default')]",
-            "location": "[parameters('azure_region')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
             ],
@@ -152,7 +171,10 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
             "apiVersion": "2021-01-01-preview",
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_data_name'), '/', parameters('eventHubs_eventHub_authRule_name'))]",
-            "location": "[parameters('azure_region')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'), parameters('eventHubs_eventHub_data_name'))]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
@@ -167,7 +189,10 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
             "apiVersion": "2021-01-01-preview",
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_failure_name'), '/', parameters('eventHubs_eventHub_authRule_name'))]",
-            "location": "[parameters('azure_region')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'), parameters('eventHubs_eventHub_failure_name'))]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
@@ -182,7 +207,10 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
             "apiVersion": "2021-01-01-preview",
             "name": "[concat(parameters('namespaces_namespace_name'),  '/', parameters('eventHubs_eventHub_success_name'), '/', parameters('eventHubs_eventHub_authRule_name'))]",
-            "location": "[parameters('azure_region')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'), parameters('eventHubs_eventHub_success_name'))]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
@@ -197,7 +225,10 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
             "apiVersion": "2021-01-01-preview",
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_data_name'), '/$Default')]",
-            "location": "[parameters('azure_region')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'), parameters('eventHubs_eventHub_data_name'))]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
@@ -208,7 +239,10 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
             "apiVersion": "2021-01-01-preview",
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_failure_name'), '/$Default')]",
-            "location": "[parameters('azure_region')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'), parameters('eventHubs_eventHub_failure_name'))]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
@@ -219,7 +253,10 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
             "apiVersion": "2021-01-01-preview",
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_success_name'), '/$Default')]",
-            "location": "[parameters('azure_region')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'),  parameters('eventHubs_eventHub_success_name'))]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
@@ -230,7 +267,10 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
             "apiVersion": "2021-01-01-preview",
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_data_name'), '/cg-', parameters('eventHubs_eventHub_data_name'))]",
-            "location": "[parameters('azure_region')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'),  parameters('eventHubs_eventHub_data_name'))]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
@@ -241,7 +281,10 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
             "apiVersion": "2021-01-01-preview",
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_failure_name'),  '/cg-', parameters('eventHubs_eventHub_failure_name'))]",
-            "location": "[parameters('azure_region')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'), parameters('eventHubs_eventHub_failure_name'))]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
@@ -252,7 +295,10 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
             "apiVersion": "2021-01-01-preview",
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_success_name'), '/cg-', parameters('eventHubs_eventHub_success_name'))]",
-            "location": "[parameters('azure_region')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'),  parameters('eventHubs_eventHub_success_name'))]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
