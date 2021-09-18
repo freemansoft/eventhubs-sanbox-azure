@@ -17,7 +17,6 @@ echo "-----------------EventHub Namespaces, Topics and Identities---------------
 az deployment group create --resource-group "$AZURE_RESOURCE_GROUP" \
     --template-file resource-templates/template-eventhubs.json \
     --parameters \
-    location="$AZURE_REGION" \
     userAssignedIdentities_identity_name="$EVENTHUBS_IDENTITY_NAME" \
     namespaces_namespace_name="$EVENTHUBS_NAMESPACE" \
     namespaces_namespace_authRule_name="$EVENTHUBS_NAMESPACE_AUTH_RULE"\

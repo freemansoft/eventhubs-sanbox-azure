@@ -6,7 +6,9 @@
             "type": "String"
         },
         "location": {
-            "type": "String"
+            "type": "String",
+            "defaultValue": "[resourceGroup().location]"
+
         },
         "namespaces_namespace_name": {
             "type": "String"
