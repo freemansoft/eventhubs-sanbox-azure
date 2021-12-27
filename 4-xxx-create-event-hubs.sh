@@ -35,10 +35,16 @@ if [ "[]" == "$eh_namespace_metadata" ]; then
     # enables Shared Access Signature (SAS) on namespace - a token secret instead of AZ principal
     # Manage requires Listen and Send
     auth_rule_create_results=$(az eventhubs namespace authorization-rule create \
-        --name $EVENTHUBS_NAMESPACE_AUTH_RULE \
+        --name $EVENTHUBS_NAMESPACE_AUTH_RULE_MANAGE \
         --namespace-name "$EVENTHUBS_NAMESPACE" \
         --resource-group "$AZURE_RESOURCE_GROUP" \
         --rights Listen Send Manage \
+        )
+    auth_rule_create_results=$(az eventhubs namespace authorization-rule create \
+        --name $EVENTHUBS_NAMESPACE_AUTH_RULE_CLIENT \
+        --namespace-name "$EVENTHUBS_NAMESPACE" \
+        --resource-group "$AZURE_RESOURCE_GROUP" \
+        --rights Listen Send \
         )
     echo "eventhubs namespace auth-rule returned: $auth_rule_create_results"
 else 

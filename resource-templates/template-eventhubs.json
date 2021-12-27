@@ -13,7 +13,13 @@
         "namespaces_namespace_name": {
             "type": "String"
         },
-        "namespaces_namespace_authRule_name": {
+        "schema_name": {
+            "type": "String"
+        },
+        "namespaces_namespace_authRule_manage_name": {
+            "type": "String"
+        },
+        "namespaces_namespace_authRule_client_name": {
             "type": "String"
         },
         "userAssignedIdentities_identity_name": {
@@ -55,6 +61,23 @@
             }
         },
         {
+            "type": "Microsoft.EventHub/namespaces/schemagroups",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('schema_name'))]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
+            ],
+            "properties": {
+                "groupProperties": {},
+                "schemaCompatibility": "Backward",
+                "schemaType": "Avro"
+            }
+        },
+        {
             "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
             "apiVersion": "2018-11-30",
             "name": "[parameters('userAssignedIdentities_identity_name')]",
@@ -85,7 +108,26 @@
         {
             "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
             "apiVersion": "2021-01-01-preview",
-            "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('namespaces_namespace_authRule_name'))]",
+            "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('namespaces_namespace_authRule_manage_name'))]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Published At": "[parameters('lastPublishedAt')]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
+            ],
+            "properties": {
+                "rights": [
+                    "Manage",
+                    "Listen",
+                    "Send"
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
+            "apiVersion": "2021-01-01-preview",
+            "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('namespaces_namespace_authRule_client_name'))]",
             "location": "[parameters('location')]",
             "tags": {
                 "Published At": "[parameters('lastPublishedAt')]"
@@ -96,8 +138,7 @@
             "properties": {
                 "rights": [
                     "Listen",
-                    "Send",
-                    "Manage"
+                    "Send"
                 ]
             }
         },

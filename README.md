@@ -4,9 +4,16 @@ Create an eventhub sandbox that can be used for example programs. This project h
 1. Create a resource group to hold everything we create
 1. Create a user Assigned Identity that can be used to read and write EventHub data
 1. Create an EventHubs namespace and three EventHub instances.
-1. Create a Shared Access Signature with read write permissions
+1. Create Shared Access signatures on namespace and eventhubs
 
 # Using the AWS CLI
+## Assumptions
+* You have a default subscription set on the CLI
+    * You logged in `az login`
+    * Youi saw your available accounts `az account list`
+    * You selected an account `az account set --subscription <subscription-id>`
+    * You verified the current account `az account show`
+
 ## Creating Resources
 Run these scripts in order. 
 
@@ -21,25 +28,26 @@ Run these scripts in order.
 | 6-create-namespace-identity-rbac.sh | Creates role assignments between `UMAI` and `namespace` via CLI |
 
 ## Deleting resources
-Scripts that can delete 
+Scripts that can delete resources created by this project
 
 | Command | Purpose |
-| - | - |
+| ------- | ------- |
 | 90-destroy-resource-group.sh | Remove this example by removing the resource group |
 | 91-destroy-namespace.sh | Remove the namespace and eventhub (topics). Leaves the resource group  |
 
-This project no longer creates dedicated clusters.  But as an FYI...
+This project no longer creates dedicated clusters. They are expensive.
+FYI...
 * Eventhub clusters cannot be deleted until 4 hours after creation. The destroy-namespace script exists so that you can tear down and rebuild namespaces and individual hubs in a shorter iterative cycle.
 
 # Kafka vs Event Hubs
-| Kafka |	Event Hubs |
-| - | - |
-| n/a | Cluster |
-| Cluster | Namespace |
-| Topic	 | Event Hub |
-| Partition |	Partition |
+| Kafka          |	Event Hubs |
+| -------------- | ----------- |
+| n/a            | Cluster |
+| Cluster        | Namespace |
+| Topic	         | Event Hub |
+| Partition      |	Partition |
 | Consumer Group |	Consumer Group |
-| Offset |	Offset |
+| Offset         |	Offset |
 
 * An EventHub `cluster` is an Azure provisioning and resource concept
 * Creating an EventHubs `cluster` creates a dedicated cluster. **Do not do that** while experimenting experimentation
@@ -51,21 +59,29 @@ This project configures authorizaton for both Shared Access Signature (SAS) and 
 A SAS is essentially a shared secret that can be used as identity.  It is simple to use.  It can be used by anyone in posession in of the shared secret.  SAS management comes with all the revocation, renewal issues of a shared certificate.
 
 The sample configures 
-* A SAS on the `namespace` for managing the EventHubs.  
-* A SAS on each `EventHub` for Sending data
+1. A Shared Access Signature on the namespace with MANGAGE SEND LISTEN permissions
+1. A Shared Access Signature on the namespace with SEND LISTEN permissions _to be used by client that needs access to more than one eventhub_
+1. A Shared Access Signature on the eventhubs with SEND permissions _to restrict send privs too individual topics_
 
 ## Azure Role Assignments
 Authorizaton can be applied at the Namespace or the individual EventHub level.  Azure EventHubs have several built in roles that can be assigned at the _namespace_ or _eventhub_ level.   
 
-Individual Service Principals or Assigned Identities can be assigned roles to a given resource, Namespace or Eventhub level. This program provides _reader_ and _writer_ permission the created _User Assigned Identity_ for to the example _namespace_.  Many organizations would do this with _Service Principals_ instead. We used _User Assigned Identities_ here "just because we could".
+Individual Service Principals or Assigned Identities can be assigned roles to a given resource, Namespace or Eventhub level. This program provides _reader_ and _writer_ permission the created _User Assigned Identity_ for to the example _namespace_.  Many organizations would do this with _Service Principals_ instead. We used _User Assigned Identities_ here because the operate well with Virtual Machines.
 
 ### Built in Azure Roles for EventHubs
 Returned by `az role definition list` [Role Assignements docs](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-cli)
 * `Azure Event Hubs Data Receiver`
 * `Azure Event Hubs Data Sender`
 
+### Built in Azure Roles for Schema Registry
+Returned as part of `az role definition list | grep "Schema Registry"` [Schema Registry RBAC](https://docs.microsoft.com/en-us/azure/event-hubs/schema-registry-overview#azure-role-based-access-control)
+* `Schema Registry Reader (Preview)`
+* `Schema Registry Writer (Preview)`
+
+**By default your main azure account does not have permission to read and write schemas.**
+
 # Azure Templates
-The `resource-template` directly contains an arm template that was exported from a demo environment (built 8/21/2021).  It can be used to create a deployment.
+The `resource-template` directory contains an arm template that was exported from a demo environment (built 8/21/2021). It eventhub scripts use it to create a deployment.
 1. Create a resource group.
 1. Deploy the `template.json` file into that resource group.  
 1. Be patient.  It takes a few minutes to deploy all the components.

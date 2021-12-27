@@ -19,7 +19,10 @@ NOW_PUBLISHED_AT="$(date +%F-%T)"
 EVENTHUBS_IDENTITY_NAME="$root_name-identity"
 
 EVENTHUBS_NAMESPACE="$root_name-namespace"
-EVENTHUBS_NAMESPACE_AUTH_RULE="$root_name-manage"
+EVENTHUBS_NAMESPACE_AUTH_RULE_MANAGE="$root_name-manage"
+EVENTHUBS_NAMESPACE_AUTH_RULE_CLIENT="$root_name-client"
+
+EVENTHUBS_SCHEMA="$root_name-schema"
 
 EVENTHUBS_HUB_NAME_DATA="$root_name-data-1"
 EVENTHUBS_HUB_NAME_SUCCESS="$root_name-success-1"
