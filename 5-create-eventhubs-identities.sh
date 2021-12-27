@@ -13,7 +13,7 @@ DIR="$(cd "$(dirname "$0")" && pwd)"
 source $DIR/env.sh
 
 echo "This will take several minutes "
-echo "-----------------EventHub Namespaces, Topics and Identities------------------"
+echo "-----------------EventHub Namespaces, EventHubs, Authorization Rules, Consumergroups, Schema Registry and Identities------------------"
 az deployment group create --resource-group "$AZURE_RESOURCE_GROUP" \
     --template-file resource-templates/template-eventhubs.json \
     --parameters \

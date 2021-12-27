@@ -92,6 +92,9 @@ The `resource-template` directory contains an arm template that was exported fro
     * [Selecting the right Azure Identities : Video](https://youtu.be/-g7ZJLQNaWU)
     * [Managed Identities and Shared Access tokens for Azure EventHubs: Blot](http://joe.blog.freemansoft.com/2021/08/managed-identities-and-shared-access.html)
     * [IAM and Role Assignments in Azure EventHubs: Video](https://youtu.be/NJMf23Sg_JY)
+* ARM Templates
+    * [Arm Template Docs](https://docs.microsoft.com/en-us/azure/templates/)
+    * [List of all Arm Template Versions](https://github.com/Azure/azure-resource-manager-schemas/blob/main/generator/resources.json)
 * EventHubs
     * https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview
 * Security
