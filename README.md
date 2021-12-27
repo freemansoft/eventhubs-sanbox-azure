@@ -22,9 +22,9 @@ Run these scripts in order.
 | 0-install-tools.sh | Install Azure CLI and jq rquired by these scripts |
 | 1-login-az.sh | Log in so you have permissions to run the rest of the script operations | 
 | 2-create-resources.sh | Create resources required for eventhubs: `ResourceGroup`, etc. via CLI |
-| 3-xxx-create-identities.sh | **Obsolete** _replaced by _5-..._ Create `User Assigned Managed Identity` (UAMI) via CLI |
-| 4-xxx-create-event-hubs.sh | **Obsolete** _replaced by _5-..._ Creates `namespace` ,`event hubs` constructs down to the hubs themselves via CLI |
-| 5-create-eventhubs-identities.sh | Creates the UMAI, `namespace`, `eventhubs` via _template_.  Does not create UMAI role assignemnts |
+| 3-xxx-create-identities.sh | **Obsoleted by ARM template** _replaced by _5-..._ Create `User Assigned Managed Identity` (UAMI) via CLI |
+| 4-xxx-create-event-hubs.sh | **Obsolete by ARM template** _replaced by _5-..._ Creates `namespace` ,`event hubs` constructs down to the hubs themselves via CLI |
+| 5-create-eventhubs-identities.sh | Creates the UMAI, `namespace`, `eventhubs`, `schema registry group` via _ARM template_.  Does not create UMAI role assignemnts |
 | 6-create-namespace-identity-rbac.sh | Creates role assignments between `UMAI` and `namespace` via CLI |
 
 ## Deleting resources
