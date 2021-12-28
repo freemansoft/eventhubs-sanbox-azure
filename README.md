@@ -3,8 +3,9 @@ Create an eventhub sandbox that can be used for example programs. This project h
 
 1. Create a resource group to hold everything we create
 1. Create a user Assigned Identity that can be used to read and write EventHub data
-1. Create an EventHubs namespace and three EventHub instances.
+1. Create an EventHubs namespace and three EventHub instances and schema registry
 1. Create Shared Access signatures on namespace and eventhubs
+1. Creates RABC permissions on namespace
 
 # Using the AWS CLI
 ## Assumptions
