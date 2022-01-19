@@ -8,6 +8,10 @@
 #   Resource Group
 #   User Assigned Identity
 
+echo "This script has been replaced by an ARM template"
+exit 1
+
+set -e
 # Edit env.sh to your preferences
 DIR="$(cd "$(dirname "$0")" && pwd)"
 source $DIR/env.sh

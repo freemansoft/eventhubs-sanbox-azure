@@ -21,10 +21,12 @@ az deployment group create --resource-group "$AZURE_RESOURCE_GROUP" \
     namespaces_namespace_name="$EVENTHUBS_NAMESPACE" \
     namespaces_namespace_authRule_manage_name="$EVENTHUBS_NAMESPACE_AUTH_RULE_MANAGE"\
     namespaces_namespace_authRule_client_name="$EVENTHUBS_NAMESPACE_AUTH_RULE_CLIENT"\
-    schema_name="$EVENTHUBS_SCHEMA" \
+    schema_group_name="$EVENTHUBS_SCHEMA_GROUP" \
     eventHubs_eventHub_data_name="$EVENTHUBS_HUB_NAME_DATA" \
     eventHubs_eventHub_success_name="$EVENTHUBS_HUB_NAME_SUCCESS" \
     eventHubs_eventHub_failure_name="$EVENTHUBS_HUB_NAME_FAIL" \
     eventHubs_eventHub_authRule_name="$EVENTHUBS_HUB_AUTH_RULE" \
-    lastPublishedAt="$NOW_PUBLISHED_AT"
+    lastPublishedAt="$NOW_PUBLISHED_AT" \
+    version="$VERSION" \
+    purpose="$PURPOSE" \
 

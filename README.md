@@ -77,9 +77,14 @@ Returned by `az role definition list` [Role Assignements docs](https://docs.micr
 ### Built in Azure Roles for Schema Registry
 Returned as part of `az role definition list | grep "Schema Registry"` [Schema Registry RBAC](https://docs.microsoft.com/en-us/azure/event-hubs/schema-registry-overview#azure-role-based-access-control)
 * `Schema Registry Reader (Preview)`
-* `Schema Registry Writer (Preview)`
+* `Schema Registry Contributor (Preview)`
 
-**By default your main azure account does not have permission to read and write schemas.**
+> **⚠ Troubleshooting**: 
+>
+> You will not be able to see the schemas in the portal and will get a 401 Error in the Portal.
+> By default your azure account that your run this script with does not have _Reader_ or _Contributor_ roles.
+> You will have to add yourself as both _Reader_ and _Contributor_ if you wish to see the schemas in the protal
+> The scripts in this repo do not do that.
 
 # Azure Templates
 The `resource-template` directory contains an arm template that was exported from a demo environment (built 8/21/2021). It eventhub scripts use it to create a deployment.

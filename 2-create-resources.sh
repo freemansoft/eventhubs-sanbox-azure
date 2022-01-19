@@ -1,4 +1,6 @@
 #!/bin/bash
+# TODO
+# This is not very efficient with the Azure API calls :-(
 #
 # Assumes 
 #   azure cli is installed
@@ -22,5 +24,11 @@ if [ "false" = "$rg_exists" ]; then
 else
     echo "resource group exists: $AZURE_RESOURCE_GROUP"
 fi
+
+# re-tag every time we deploy
+rg_metadata=$(az group list --query "[?name=='$AZURE_RESOURCE_GROUP']")
+rg_id=$(jq -r ".[0].id" <<< "$rg_metadata")
+tagging_metadata=$(az tag create --resource-id $rg_id --tags PublishedAt="$NOW_PUBLISHED_AT" Purpose="$PURPOSE" Version="$VERSION")
+# don't want to re-fetch but will to get the latest tags
 rg_metadata=$(az group list --query "[?name=='$AZURE_RESOURCE_GROUP']")
 echo "using resource group: $rg_metadata"

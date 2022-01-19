@@ -5,15 +5,23 @@
         "lastPublishedAt": {
             "type": "String"
         },
+        "version": {
+            "type": "String",
+            "defaultValue": "unknown"
+        },
         "location": {
             "type": "String",
             "defaultValue": "[resourceGroup().location]"
 
         },
+        "purpose": {
+            "type": "String",
+            "defaultValue": "what is anyone's purpose?"
+        },
         "namespaces_namespace_name": {
             "type": "String"
         },
-        "schema_name": {
+        "schema_group_name": {
             "type": "String"
         },
         "namespaces_namespace_authRule_manage_name": {
@@ -46,7 +54,9 @@
             "name": "[parameters('namespaces_namespace_name')]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "sku": {
                 "name": "Standard",
@@ -63,10 +73,12 @@
         {
             "type": "Microsoft.EventHub/namespaces/schemagroups",
             "apiVersion": "2021-11-01",
-            "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('schema_name'))]",
+            "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('schema_group_name'))]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
@@ -83,7 +95,9 @@
             "name": "[parameters('userAssignedIdentities_identity_name')]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             }
         },
         {
@@ -92,7 +106,9 @@
             "name": "[concat(parameters('namespaces_namespace_name'), '/RootManageSharedAccessKey')]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
@@ -111,7 +127,9 @@
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('namespaces_namespace_authRule_manage_name'))]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
@@ -130,7 +148,9 @@
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('namespaces_namespace_authRule_client_name'))]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
@@ -147,7 +167,9 @@
             "apiVersion": "2021-06-01-preview",
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_data_name'))]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "location": "[parameters('location')]",
             "dependsOn": [
@@ -165,7 +187,9 @@
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_failure_name'))]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
@@ -182,7 +206,9 @@
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_success_name'))]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
@@ -199,7 +225,9 @@
             "name": "[concat(parameters('namespaces_namespace_name'), '/default')]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_namespace_name'))]"
@@ -216,7 +244,9 @@
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_data_name'), '/', parameters('eventHubs_eventHub_authRule_name'))]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'), parameters('eventHubs_eventHub_data_name'))]",
@@ -234,7 +264,9 @@
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_failure_name'), '/', parameters('eventHubs_eventHub_authRule_name'))]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'), parameters('eventHubs_eventHub_failure_name'))]",
@@ -252,7 +284,9 @@
             "name": "[concat(parameters('namespaces_namespace_name'),  '/', parameters('eventHubs_eventHub_success_name'), '/', parameters('eventHubs_eventHub_authRule_name'))]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'), parameters('eventHubs_eventHub_success_name'))]",
@@ -270,7 +304,9 @@
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_data_name'), '/$Default')]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'), parameters('eventHubs_eventHub_data_name'))]",
@@ -284,7 +320,9 @@
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_failure_name'), '/$Default')]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'), parameters('eventHubs_eventHub_failure_name'))]",
@@ -298,7 +336,9 @@
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_success_name'), '/$Default')]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'),  parameters('eventHubs_eventHub_success_name'))]",
@@ -312,7 +352,9 @@
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_data_name'), '/cg-', parameters('eventHubs_eventHub_data_name'))]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'),  parameters('eventHubs_eventHub_data_name'))]",
@@ -326,7 +368,9 @@
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_failure_name'),  '/cg-', parameters('eventHubs_eventHub_failure_name'))]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'), parameters('eventHubs_eventHub_failure_name'))]",
@@ -340,7 +384,9 @@
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_success_name'), '/cg-', parameters('eventHubs_eventHub_success_name'))]",
             "location": "[parameters('location')]",
             "tags": {
-                "Published At": "[parameters('lastPublishedAt')]"
+                "PublishedAt": "[parameters('lastPublishedAt')]",
+                "Purpose": "[parameters('purpose')]",
+                "Version": "[parameters('version')]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_namespace_name'),  parameters('eventHubs_eventHub_success_name'))]",

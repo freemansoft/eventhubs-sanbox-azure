@@ -12,6 +12,9 @@
 #   Event Hubs topics
 #       Enables a shared access token
 
+echo "This script has been replaced by an ARM template"
+exit 1
+
 # Edit env.sh to your preferences
 set -e
 DIR="$(cd "$(dirname "$0")" && pwd)"
