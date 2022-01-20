@@ -36,6 +36,7 @@ COMMIT_HASH="$(git log -1 --format='%H')"
 # short commit hash
 COMMIT_HASH="$(git log --pretty=format:'%h' -n 1)"
 CURRENT_BRANCH="$(git branch --show-current)"
-VERSION=$CURRENT_BRANCH:$COMMIT_HASH
-
+CURRENT_REPO="$(basename $(git remote get-url origin) .git)"
+VERSION=$CURRENT_REPO:$CURRENT_BRANCH:$COMMIT_HASH
+# echo $VERSION
 PURPOSE="EventHubs IaC Example"
