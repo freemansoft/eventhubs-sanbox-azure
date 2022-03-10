@@ -9,14 +9,14 @@
             "type": "String",
             "defaultValue": "unknown"
         },
+        "project": {
+            "type": "String",
+            "defaultValue": "what is anyone's purpose?"
+        },
         "location": {
             "type": "String",
             "defaultValue": "[resourceGroup().location]"
 
-        },
-        "purpose": {
-            "type": "String",
-            "defaultValue": "what is anyone's purpose?"
         },
         "namespaces_namespace_name": {
             "type": "String"
@@ -55,7 +55,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "sku": {
@@ -77,7 +77,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "dependsOn": [
@@ -96,7 +96,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             }
         },
@@ -107,7 +107,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "dependsOn": [
@@ -128,7 +128,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "dependsOn": [
@@ -149,7 +149,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "dependsOn": [
@@ -168,7 +168,7 @@
             "name": "[concat(parameters('namespaces_namespace_name'), '/', parameters('eventHubs_eventHub_data_name'))]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "location": "[parameters('location')]",
@@ -188,7 +188,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "dependsOn": [
@@ -207,7 +207,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "dependsOn": [
@@ -226,7 +226,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "dependsOn": [
@@ -245,7 +245,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "dependsOn": [
@@ -265,7 +265,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "dependsOn": [
@@ -285,7 +285,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "dependsOn": [
@@ -305,7 +305,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "dependsOn": [
@@ -321,7 +321,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "dependsOn": [
@@ -337,7 +337,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "dependsOn": [
@@ -353,7 +353,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "dependsOn": [
@@ -369,7 +369,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "dependsOn": [
@@ -385,7 +385,7 @@
             "location": "[parameters('location')]",
             "tags": {
                 "PublishedAt": "[parameters('lastPublishedAt')]",
-                "Purpose": "[parameters('purpose')]",
+                "Project": "[parameters('project')]",
                 "Version": "[parameters('version')]"
             },
             "dependsOn": [

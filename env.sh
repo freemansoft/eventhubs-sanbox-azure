@@ -39,4 +39,4 @@ CURRENT_BRANCH="$(git branch --show-current)"
 CURRENT_REPO="$(basename $(git remote get-url origin) .git)"
 VERSION=$CURRENT_REPO:$CURRENT_BRANCH:$COMMIT_HASH
 # echo $VERSION
-PURPOSE="EventHubs IaC Example"
+PROJECT="EventHubs IaC Example"

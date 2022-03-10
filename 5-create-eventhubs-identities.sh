@@ -28,5 +28,5 @@ az deployment group create --resource-group "$AZURE_RESOURCE_GROUP" \
     eventHubs_eventHub_authRule_name="$EVENTHUBS_HUB_AUTH_RULE" \
     lastPublishedAt="$NOW_PUBLISHED_AT" \
     version="$VERSION" \
-    purpose="$PURPOSE" \
+    project="$PROJECT" \
 
